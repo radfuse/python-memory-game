@@ -1,0 +1,15 @@
+import pygame
+
+TITLE = "Memory game"
+WINDOW_WIDTH = 600
+WINDOW_HEIGHT = 600
+GRID_GAP = 2
+
+BACKGROUND_COLOR = pygame.Color("#E5E3C9")
+CARD_COLOR = pygame.Color("#B4CFB0")
+FONT_COLOR = pygame.Color("#789395")
+FONT_FAMILY = "Arial"
+FONT_SIZE = 30
+BUTTON_FONT_SIZE = 30
+BUTTON_PADDING_X = 20
+BUTTON_PADDING_Y = 8
