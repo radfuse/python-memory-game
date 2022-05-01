@@ -1,7 +1,9 @@
 import pygame
 import settings
+import constants
 
-from buttonscreen import ButtonScreen
+from start_screen import StartScreen
+from end_screen import EndScreen
 from game import Game
 
 class Control(object):
@@ -9,11 +11,11 @@ class Control(object):
         self.screen = pygame.display.get_surface()
         self.done = False
         self.states = {
-            "START" : ButtonScreen("Press start", "Start"),
-            "GAME" : Game(),
-            "WIN" : ButtonScreen("You won!", "Play again")
+            constants.STATE_START : StartScreen(),
+            constants.STATE_GAME : Game(),
+            constants.STATE_END : EndScreen()
         }
-        self.state = self.states["START"] # type: ButtonScreen | Game
+        self.state = self.states[constants.STATE_START] # type: StartScreen | Game | EndScreen
 
     def event_loop(self):
         for event in pygame.event.get():
