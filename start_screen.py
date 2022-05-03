@@ -28,16 +28,16 @@ class StartScreen(_Scene):
             self.button_text_rect.height + (settings.BUTTON_PADDING_Y * 2)
         )
 
-    def draw(self, surface):
+    def draw(self, surface: pygame.surface.Surface):
         surface.fill(settings.BACKGROUND_COLOR)
         surface.blit(self.main, self.main_rect)
         pygame.draw.rect(surface, settings.CARD_COLOR, self.button_background_rect)
         surface.blit(self.button, self.button_text_rect)
 
-    def update(self, now):
+    def update(self, now: int):
         _Scene.update(self, now)
 
-    def get_event(self, event):
+    def get_event(self, event: pygame.event.Event):
         if (event.type == pygame.MOUSEBUTTONUP):
             if (self.button_background_rect.collidepoint(pygame.mouse.get_pos())):
                 self.done = True

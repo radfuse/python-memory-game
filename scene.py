@@ -7,7 +7,7 @@ class _Scene(object):
         self.start_time = None
         self.screen_copy = None
 
-    def startup(self, now):
+    def startup(self, now: int):
         self.start_time = now
         self.screen_copy = pygame.display.get_surface().copy()
 
@@ -16,9 +16,9 @@ class _Scene(object):
         self.start_time = None
         self.screen_copy = None
 
-    def get_event(self, event):
+    def get_event(self, event: pygame.event.Event):
         pass
 
-    def update(self, now):
+    def update(self, now: int):
         if not self.start_time:
             self.startup(now)

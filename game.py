@@ -7,8 +7,6 @@ import constants
 from image import Image
 from scene import _Scene
 
-GAP = 2
-
 class Game(_Scene):
     final_time = None
 
@@ -25,12 +23,12 @@ class Game(_Scene):
 
         self.load_images()
 
-    def get_event(self, event):
+    def get_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEBUTTONUP:
             for image in Image.all_cards:
                 image.check_collision()
 
-    def update(self, now):
+    def update(self, now: int):
         _Scene.update(self, now)
         showCount = 0
         
@@ -42,7 +40,7 @@ class Game(_Scene):
             Game.final_time = self.get_time(pygame.time.get_ticks() - self.start_time)
             self.done = True
 
-    def draw(self, surface):
+    def draw(self, surface: pygame.surface.Surface):
         surface.fill(settings.BACKGROUND_COLOR)
 
         font = pygame.font.SysFont(settings.FONT_FAMILY, settings.BUTTON_FONT_SIZE)
@@ -70,7 +68,7 @@ class Game(_Scene):
 
         Image.all_cards = images
 
-    def get_time(self, milliseconds):
+    def get_time(self, milliseconds: int) -> str:
         seconds = int((milliseconds/1000)%60)
         minutes = int((milliseconds/(1000*60))%60)
         dt = datetime.time(0, minutes, seconds)

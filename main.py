@@ -9,6 +9,5 @@ def main():
     Control().main_loop()
     pygame.quit()
 
-
 if __name__ == "__main__":
     main()

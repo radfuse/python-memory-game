@@ -3,17 +3,17 @@ import pygame
 import settings
 
 class Image(object):
-    last_click = None
+    last_click = None # type: int | None
     flipped1 = None # type: Image
     flipped2 = None # type: Image
     all_cards = [] # type: list[Image]
 
-    def __init__(self, src: pygame.Surface, name):
+    def __init__(self, src: pygame.Surface, name: str):
         self.src = src
         self.visible = True
         self.name = name
 
-    def setup(self, index, columns, rows):
+    def setup(self, index: int, columns: int, rows: int):
         self.x = index % columns
         self.y = math.floor(index / rows)
         self.index = index
@@ -30,7 +30,7 @@ class Image(object):
 
         self.rect = rect
 
-    def draw(self, surface):
+    def draw(self, surface: pygame.surface.Surface):
         if (self.visible == True):
             if ((Image.flipped1 != None and Image.flipped1.index == self.index) or (Image.flipped2 != None and Image.flipped2.index == self.index)):
                 surface.blit(self.src, self.rect)
