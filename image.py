@@ -15,7 +15,7 @@ class Image(object):
 
     def setup(self, index: int, columns: int, rows: int):
         self.x = index % columns
-        self.y = math.floor(index / rows)
+        self.y = math.floor(index / columns)
         self.index = index
 
         card_width = 100

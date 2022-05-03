@@ -7,7 +7,7 @@ from game import Game
 
 class EndScreen(_Scene):
     def __init__(self):
-        _Scene.__init__(self, constants.STATE_GAME)
+        _Scene.__init__(self, constants.STATE_START)
 
         self.font = pygame.font.SysFont(settings.FONT_FAMILY, settings.FONT_SIZE)
 
@@ -34,8 +34,6 @@ class EndScreen(_Scene):
         )
 
     def draw(self, surface: pygame.surface.Surface):
-        self.make_stats()
-
         surface.fill(settings.BACKGROUND_COLOR)
         surface.blit(self.main, self.main_rect)
         surface.blit(self.stat, self.stat_rect)
@@ -44,6 +42,7 @@ class EndScreen(_Scene):
 
     def update(self, now: int):
         _Scene.update(self, now)
+        self.make_stats()
 
     def get_event(self, event: pygame.event.Event):
         if (event.type == pygame.MOUSEBUTTONUP):

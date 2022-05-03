@@ -1,8 +1,8 @@
 import pygame
 
 TITLE = "Memory game"
-WINDOW_WIDTH = 600
-WINDOW_HEIGHT = 600
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 800
 GRID_GAP = 2
 
 BACKGROUND_COLOR = pygame.Color("#E5E3C9")

@@ -9,6 +9,7 @@ from scene import _Scene
 
 class Game(_Scene):
     final_time = None
+    size = constants.SIZE_4X4
 
     def __init__(self):
         _Scene.__init__(self, constants.STATE_END)
@@ -21,6 +22,8 @@ class Game(_Scene):
         Image.flipped2 = None
         Image.all_cards = []
 
+    def startup(self, now: int):
+        _Scene.startup(self, now)
         self.load_images()
 
     def get_event(self, event: pygame.event.Event):
@@ -54,8 +57,10 @@ class Game(_Scene):
             
     def load_images(self):
         images = [] # type: list[Image]
+        game_size = Game.size.split('x')
+        max_cards = int(int(game_size[0]) * int(game_size[1]) / 2)
 
-        for image_name in range(1, 9):
+        for image_name in range(1, max_cards + 1):
             src = pygame.image.load('assets/%d.jpg'%image_name)
             images.append(Image(src, image_name))
             images.append(Image(src, image_name))
@@ -63,7 +68,7 @@ class Game(_Scene):
         random.shuffle(images)
 
         for index, image in enumerate(images):
-            image.setup(index, 4, 4)
+            image.setup(index, int(game_size[0]), int(game_size[1]))
             images[index] = image
 
         Image.all_cards = images
